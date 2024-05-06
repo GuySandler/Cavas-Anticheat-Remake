@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Detector</title>
+<style>
+  /* Some basic styling for demonstration purposes */
+  body {
+    font-family: Arial, sans-serif;
+  }
+  #events-container {
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Event Detector</h1>
+
+<div id="events-container">
+  <!-- Detected events will be added here -->
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const eventsContainer = document.getElementById('events-container');
+
+  // Function to add a new h1 element with the detected event
+  function addEventElement(eventName) {
+    const newH1 = document.createElement('h1');
+    newH1.textContent = `Detected ${eventName} event`;
+    eventsContainer.appendChild(newH1);
+  }
+
+  // Event listener for focus and blur events
+  window.addEventListener('focus', function() {
+    addEventElement('focus');
+  });
+
+  window.addEventListener('blur', function() {
+    addEventElement('blur');
+  });
+
+  // Event listener for visibility change event
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      addEventElement('visibilitychange (hidden)');
+    } else {
+      addEventElement('visibilitychange (visible)');
+    }
+  });
+
+  // Event listener for mouse leaving the page
+  document.addEventListener('mouseleave', function() {
+    addEventElement('mouseleave');
+  });
+
+  // Event listener for mouse entering the page
+  document.addEventListener('mouseenter', function() {
+    addEventElement('mouseenter');
+  });
+});
+</script>
+
+</body>
+</html>
